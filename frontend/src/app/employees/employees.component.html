@@ -1,0 +1,27 @@
+<div>
+  <h1>Employee Management</h1>
+  <ul>
+    <li *ngFor="let employee of employees">
+      {{ employee.name }} - {{ employee.position }} - {{ employee.office }} - {{ employee.salary }}
+      <button (click)="editEmployee(employee)">Edit</button>
+      <button (click)="deleteEmployee(employee.id)">Delete</button>
+    </li>
+  </ul>
+  <div *ngIf="editingEmployee">
+    <h2>Edit Employee</h2>
+    <input [(ngModel)]="editingEmployee.name" placeholder="Name" />
+    <input [(ngModel)]="editingEmployee.position" placeholder="Position" />
+    <input [(ngModel)]="editingEmployee.office" placeholder="Office" />
+    <input [(ngModel)]="editingEmployee.salary" placeholder="Salary" type="number" />
+    <button (click)="updateEmployee()">Save</button>
+    <button (click)="editingEmployee = null">Cancel</button>
+  </div>
+  <div>
+    <h2>Add Employee</h2>
+    <input [(ngModel)]="newEmployee.name" placeholder="Name" />
+    <input [(ngModel)]="newEmployee.position" placeholder="Position" />
+    <input [(ngModel)]="newEmployee.office" placeholder="Office" />
+    <input [(ngModel)]="newEmployee.salary" placeholder="Salary" type="number" />
+    <button (click)="addEmployee()">Add</button>
+  </div>
+</div>
